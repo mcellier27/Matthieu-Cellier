@@ -1,0 +1,19 @@
+{
+  "name": "mybank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "oracledb": "^6.5.1"
+  },
+  "dependencies": {
+    "csv-writer": "^1.6.0"
+  }
+}

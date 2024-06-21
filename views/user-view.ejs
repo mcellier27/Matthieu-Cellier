@@ -1,0 +1,43 @@
+<h1>Hello <%= currentUser.NAME %>
+</h1>
+<h2>Bank accounts:</h2>
+<% accounts.forEach(function(account){ %>
+    <div class="account">
+        <span>
+            <%= account.NAME %>
+        </span>
+        <span>
+            <%= account.AMOUNT %>$
+        </span>
+        <span>(Transactions: <%= account.TRANSACTIONS %>)</span>
+    </div>
+    <div>
+        <h4>Add Transaction</h4>
+        <form class="transaction-form" action="/transactions" method="POST">
+            <input type="hidden" name="account_id" value="<%= account.ID %>">
+            <input type="hidden" name="user_id" value="<%= currentUser.ID %>">
+            <label for="transaction-name-<%= account.ID %>">Transaction Name:</label>
+            <input type="text" id="transaction-name-<%= account.ID %>" name="name" required>
+            <label for="transaction-amount-<%= account.ID %>">Amount:</label>
+            <input type="number" id="transaction-amount-<%= account.ID %>" name="amount" required>
+            <label for="transaction-type-<%= account.ID %>">Type:</label>
+            <select id="transaction-type-<%= account.ID %>" name="type">
+                <option value="1">In</option>
+                <option value="0">Out</option>
+            </select>
+            <button type="submit">Add Transaction</button>
+        </form>
+        <form class="view-transactions" action="/views/<%= currentUser.ID %>/<%= account.ID %>" method="GET">
+            <button type="submit">View Transactions</button>
+        </form>
+    </div>
+    <% }); %>
+        <h3>Create New Account</h3>
+        <form action="/accounts" method="POST">
+            <input type="hidden" name="user_id" value="<%= currentUser.ID %>">
+            <label for="name">Account Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="amount">Initial Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+            <button type="submit">Create Account</button>
+        </form>

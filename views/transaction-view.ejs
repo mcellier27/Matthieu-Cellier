@@ -1,0 +1,14 @@
+<h1>Account: <%= currentAccount.NAME %> - User: <%= currentUser.NAME %></h1>
+  <h2>Transactions:</h2>
+  <% transactions.forEach(function(transaction){ %>
+    <div class="transaction">
+      <span><%= transaction.NAME %></span>
+      <span><%= transaction.AMOUNT %>$</span>
+      <span><%= transaction.TYPE === 1 ? "In" : "Out" %></span>
+    </div>
+  <% }); %>
+  <div class="back-button">
+    <form action="/views/<%= currentUser.ID %>" method="GET">
+      <button type="submit">Back to Accounts</button>
+    </form>
+  </div>
